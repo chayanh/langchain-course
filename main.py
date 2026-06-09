@@ -2,15 +2,14 @@ import os
 
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama
-
+from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
 
 def main():
-    #print(os.getenv("OPENAI_API_KEY"))
+    # print(os.getenv("OPENAI_API_KEY"))
     print("Hello from langchain-course!")
     information = """Sachin Ramesh Tendulkar (/ˌsʌtʃɪn tɛnˈduːlkər/ ⓘ; Marathi: [sətɕin t̪eɳɖulkəɾ]; born 24 April 1973) is an Indian former international cricketer who captained the Indian national team. Often dubbed the "God of Cricket" in India, he is widely regarded as one of the greatest cricketers of all time.[5] He holds several world records, including being the all-time highest run-scorer in international cricket,[6] receiving the most player of the match awards in international cricket,[7] and being the only batsman to score 100 international centuries.[8] Tendulkar was a Member of Parliament, Rajya Sabha by presidential nomination from 2012 to 2018.[9][10]
 
@@ -35,10 +34,10 @@ Tendulkar is regarded as a symbol of national pride in India for his achievement
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
     # llm = ChatOllama(model="gemma3:270m", temperature=0)
 
-
     summary_chain = summary_prompt_template | llm
     summary = summary_chain.invoke({"information": information})
-    print(summary.content) 
+    print(summary.content)
+
 
 if __name__ == "__main__":
     main()
